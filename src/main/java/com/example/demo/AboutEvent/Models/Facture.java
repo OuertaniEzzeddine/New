@@ -1,38 +1,24 @@
 package com.example.demo.AboutEvent.Models;
 
-public class Facture {
-    private int idFacture;
+import com.example.demo.base.model.AbstractBaseEntity;
+import lombok.*;
+
+import jakarta.persistence.*;
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name="FACTURE")
+public class Facture extends AbstractBaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="FACTURE_ID")
+    private Integer idFacture;
+
+    @Column(name="CONTENU")
     private String contenu;
 
-    public Facture() {
-    }
 
-    public Facture(int idFacture, String contenu) {
-        this.idFacture = idFacture;
-        this.contenu = contenu;
-    }
-
-    public int getIdFacture() {
-        return idFacture;
-    }
-
-    public void setIdFacture(int idFacture) {
-        this.idFacture = idFacture;
-    }
-
-    public String getContenu() {
-        return contenu;
-    }
-
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
-    }
-
-    @Override
-    public String toString() {
-        return "Facture{" +
-                "idFacture=" + idFacture +
-                ", contenu='" + contenu + '\'' +
-                '}';
-    }
 }

@@ -2,9 +2,8 @@ package com.example.demo.Users.Controller;
 
 
 
-import com.example.demo.Users.Models.User
         ;
-import com.example.demo.Users.Service.UserService;
+/*import com.example.demo.Users.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,5 +51,5 @@ public class UserController {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-}
+}*/
 

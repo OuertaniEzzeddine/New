@@ -1,62 +1,37 @@
 package com.example.demo.AboutEvent.Models;
 
-public class Revenu {
-    private int idRevenu;
+import com.example.demo.base.model.AbstractBaseEntity;
+import lombok.*;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+
+@Table(name="REVENU")
+public class Revenu extends AbstractBaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID")
+    private Integer id;
+
+    @Column(name="MONTANT")
     private double montant;
+
+    @Column(name="DESCRIPTION")
     private String description;
-    private String date;
-    private int idEvent;
+
+    @Column(name="DATE")
+    private Date date;
 
 
-    public Revenu() {
-    }
 
-    public Revenu(int idRevenu, double montant, String description, String date, int idEvent) {
-        this.idRevenu = idRevenu;
-        this.montant = montant;
-        this.description = description;
-        this.date = date;
-        this.idEvent = idEvent;
-    }
 
-    public int getIdRevenu() {
-        return idRevenu;
-    }
 
-    public void setIdRevenu(int idRevenu) {
-        this.idRevenu = idRevenu;
-    }
-
-    public double getMontant() {
-        return montant;
-    }
-
-    public void setMontant(double montant) {
-        this.montant = montant;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public int getIdEvent() {
-        return idEvent;
-    }
-
-    public void setIdEvent(int idEvent) {
-        this.idEvent = idEvent;
-    }
 }
 

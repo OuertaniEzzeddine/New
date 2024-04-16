@@ -1,6 +1,5 @@
 package com.example.demo.Users.Service;
-import com.example.demo.Users.Models.User;
-
+/*
 import java.util.List;
 
 public interface UserService {
@@ -14,4 +13,4 @@ public interface UserService {
     User updateUser(Long id, User user);
 
     void deleteUser(Long id);
-}
+}*/
