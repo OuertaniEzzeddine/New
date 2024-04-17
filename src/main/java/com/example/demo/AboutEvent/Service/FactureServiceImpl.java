@@ -7,33 +7,49 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class FactureServiceImpl implements FactureService{
+    private static final Logger logger = LogManager.getLogger(FactureServiceImpl.class);
+
     public final FactureRepository factureRepository;
     public FactureServiceImpl(FactureRepository factureRepository)
     {this.factureRepository=factureRepository;}
+
+
     @Override
     public Facture getFacturetbyId(Integer id) {
+        logger.info("getting facture with id {}",id);
         Optional<Facture> optionalFacture = factureRepository.findById(id);
-        return optionalFacture.orElse(null);
+        Facture f = optionalFacture.orElse(null);
+        if (f==null) {
+            logger.warn("Facture with id {} does not exist",id);
+            return f;
+        } return f;
     }
 
     @Override
     public Facture createFacture(Facture f) {
+        logger.info("Creating facture:{}",f);
         factureRepository.save(f);
         return f;
     }
 
     @Override
     public Facture updateFacture(Integer id, Facture f) {
+        logger.info("Updating facture with id  {}", id);
         if (factureRepository.existsById(id)) {
             f.setIdFacture(id);
             return factureRepository.save(f);
         }
+        logger.warn("Facture with id {} doesn't exist",id);
         return null; // Or throw an exception
     }
 
     @Override
     public void deleteFacture(Integer id) {
+        logger.info("Deleting facture with id {}",id);
         factureRepository.deleteById(id);
 
     }
