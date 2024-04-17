@@ -2,7 +2,6 @@ package com.example.demo.AboutEvent.Service;
 
 import com.example.demo.AboutEvent.Models.*;
 import com.example.demo.AboutEvent.Repository.EventRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

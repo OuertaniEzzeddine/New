@@ -19,7 +19,7 @@ public class Budget extends AbstractBaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="BUDGET_ID")
-    private Integer idEvent;
+    private Integer id;
 
     @Column(name = "MONTANT")
     private Double montant;

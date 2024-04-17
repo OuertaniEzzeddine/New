@@ -1,6 +1,13 @@
 server:
   port: 8085
 spring:
+  application:
+    name: Projet_web
+  mvc:
+    view:
+      prefix: /views/
+      suffix: .jsp
+
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
@@ -8,7 +15,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database : postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true

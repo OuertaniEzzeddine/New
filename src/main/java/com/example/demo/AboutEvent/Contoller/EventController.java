@@ -1,9 +1,7 @@
 package com.example.demo.AboutEvent.Contoller;
 
-import com.example.demo.AboutEvent.Models.*;
+import com.example.demo.AboutEvent.Models.Event;
 import com.example.demo.AboutEvent.Service.EventService;
-import com.example.demo.Users.Models.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +21,7 @@ public class EventController {
         return new ResponseEntity<>(events, HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Event> getAdminById(@PathVariable Long id) {
+    public ResponseEntity<Event> getEventById(@PathVariable Long id) {
         Event event = eventService.getEventbyId(id);
         return new ResponseEntity<>(event, HttpStatus.OK);
     }
