@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import com.example.demo.AboutEvent.Models.Facture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.example.demo.AboutEvent.Models.Budget;
+
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,4 +52,5 @@ public class BudgetTest {
         assertEquals(budget1.hashCode(), budget2.hashCode());
         assertNotEquals(budget1.hashCode(), budget3.hashCode());
     }
+
 }

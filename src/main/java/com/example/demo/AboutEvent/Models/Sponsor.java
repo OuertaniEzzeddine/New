@@ -6,6 +6,8 @@ import lombok.ToString;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Getter
 @Setter
 @ToString
@@ -21,5 +23,16 @@ public class Sponsor {
     @Column(name="DESCRIPTION")
     private String description;
 
-/*    private Event ee;*/
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sponsor sponsor = (Sponsor) o;
+        return Objects.equals(id, sponsor.id) && Objects.equals(nom, sponsor.nom) && Objects.equals(description, sponsor.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nom, description);
+    }
 }

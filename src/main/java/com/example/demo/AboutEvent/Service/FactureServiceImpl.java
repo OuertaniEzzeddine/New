@@ -9,25 +9,15 @@ import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+@Service
 public class FactureServiceImpl implements FactureService{
     private static final Logger logger = LogManager.getLogger(FactureServiceImpl.class);
-
     public final FactureRepository factureRepository;
     public FactureServiceImpl(FactureRepository factureRepository)
     {this.factureRepository=factureRepository;}
 
 
-    @Override
-    public Facture getFacturetbyId(Integer id) {
-        logger.info("getting facture with id {}",id);
-        Optional<Facture> optionalFacture = factureRepository.findById(id);
-        Facture f = optionalFacture.orElse(null);
-        if (f==null) {
-            logger.warn("Facture with id {} does not exist",id);
-            return f;
-        } return f;
-    }
+
 
     @Override
     public Facture createFacture(Facture f) {
@@ -53,4 +43,25 @@ public class FactureServiceImpl implements FactureService{
         factureRepository.deleteById(id);
 
     }
+
+    @Override
+    public List<Facture> getAllFactures() {
+        logger.info("Getting all factures: ");
+        return factureRepository.findAll();
+    }
+
+    @Override
+    public Facture getFactureById(Integer id) {
+
+        logger.info("getting facture with id {}",id);
+        Optional<Facture> optionalFacture = factureRepository.findById(id);
+        Facture f = optionalFacture.orElse(null);
+        if (f==null) {
+            logger.warn("Facture with id {} does not exist",id);
+            return f;
+        } return f;
+
+    }
+
+
 }

@@ -5,6 +5,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Setter
 @Getter
@@ -31,10 +32,16 @@ public class Depense extends AbstractBaseEntity {
     @Column(name="DATE")
     private Date date;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Depense depense = (Depense) o;
+        return Objects.equals(idDepense, depense.idDepense) && Objects.equals(montant, depense.montant) && Objects.equals(description, depense.description) && Objects.equals(date, depense.date);
+    }
 
-
-
-
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(idDepense, montant, description, date);
+    }
 }

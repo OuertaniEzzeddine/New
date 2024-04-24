@@ -5,6 +5,7 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -30,8 +31,17 @@ public class Revenu extends AbstractBaseEntity {
     private Date date;
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Revenu revenu = (Revenu) o;
+        return Double.compare(montant, revenu.montant) == 0 && Objects.equals(id, revenu.id) && Objects.equals(description, revenu.description) && Objects.equals(date, revenu.date);
+    }
 
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, montant, description, date);
+    }
 }
 

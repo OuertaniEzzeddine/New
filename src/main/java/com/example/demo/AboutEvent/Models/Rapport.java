@@ -6,6 +6,8 @@ import lombok.*;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -36,6 +38,16 @@ public class Rapport extends AbstractBaseEntity {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Depense> depenses;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rapport rapport = (Rapport) o;
+        return Objects.equals(idRapport, rapport.idRapport) && Objects.equals(generationDate, rapport.generationDate) && Objects.equals(contenu, rapport.contenu) && Objects.equals(e, rapport.e) && Objects.equals(revenus, rapport.revenus) && Objects.equals(depenses, rapport.depenses);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(idRapport, generationDate, contenu, e, revenus, depenses);
+    }
 }

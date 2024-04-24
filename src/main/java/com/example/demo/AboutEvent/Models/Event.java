@@ -5,6 +5,8 @@ import lombok.*;
 
 import jakarta.persistence.*;
 import java.util.List;
+import java.util.Objects;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -42,7 +44,16 @@ public class Event extends AbstractBaseEntity {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Sponsor> sponsors;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return Objects.equals(idEvent, event.idEvent) && Objects.equals(nom, event.nom) && Objects.equals(date, event.date) && Objects.equals(lieu, event.lieu) && Objects.equals(theme, event.theme) && Objects.equals(nombrePersonne, event.nombrePersonne) && Objects.equals(rapp, event.rapp) && Objects.equals(budgets, event.budgets) && Objects.equals(depenses, event.depenses) && Objects.equals(revenus, event.revenus) && Objects.equals(factures, event.factures) && Objects.equals(sponsors, event.sponsors);
+    }
 
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(idEvent, nom, date, lieu, theme, nombrePersonne, rapp, budgets, depenses, revenus, factures, sponsors);
+    }
 }
