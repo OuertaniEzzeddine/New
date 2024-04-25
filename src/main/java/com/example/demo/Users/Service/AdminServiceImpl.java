@@ -1,7 +1,6 @@
 package com.example.demo.Users.Service;
 import com.example.demo.Users.Models.Admin;
 import com.example.demo.Users.Repository.AdminRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +10,6 @@ public class AdminServiceImpl implements AdminService {
 
     private final AdminRepository adminRepository;
 
-    @Autowired
     public AdminServiceImpl(AdminRepository adminRepository) {
         this.adminRepository = adminRepository;
     }

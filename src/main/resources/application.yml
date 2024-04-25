@@ -11,9 +11,9 @@ spring:
       suffix: .jsp
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/a
     username: postgres
-    password: ezzou
+    password: 962001Bibi
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -23,11 +23,6 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        format_sql: true
-  liquibase:
-    change-log: classpath:/liquibase/changelog/changelog-master.xml
-    url: jdbc:postgresql://localhost:5432/postgres
-    user: postgres
-    password: ezzou
-    contexts: development
-    enabled: true
+        '[format_sql]': true
+  
+ 

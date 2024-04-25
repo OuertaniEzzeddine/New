@@ -1,6 +1,9 @@
 package com.example.demo.AboutEvent.Models;
 
 import com.example.demo.base.model.AbstractBaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -20,6 +23,7 @@ public class Event extends AbstractBaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long idEvent;
+    
     private String nom;
     private String date;
     private String lieu;
@@ -29,19 +33,24 @@ public class Event extends AbstractBaseEntity {
     @OneToOne
     private Rapport rapp;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
+    @JsonBackReference
     private List<Budget> budgets;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
+    @JsonBackReference
     private List<Depense> depenses;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
+    @JsonBackReference
     private List<Revenu> revenus;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
+    @JsonManagedReference
     private List<Facture> factures;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
+    @JsonBackReference
     private List<Sponsor> sponsors;
 
     @Override

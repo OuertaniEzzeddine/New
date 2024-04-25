@@ -1,13 +1,14 @@
 package com.example.demo.AboutEvent.Models;
 
 import com.example.demo.base.model.AbstractBaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -27,6 +28,10 @@ public class Budget extends AbstractBaseEntity {
 
     @Column(name = "DESCRIPTION")
     private String desciption;
+
+    @ManyToOne
+    @JsonBackReference
+    private Event event;
 
     @Override
     public boolean equals(Object o) {

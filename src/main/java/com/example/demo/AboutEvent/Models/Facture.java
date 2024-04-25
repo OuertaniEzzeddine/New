@@ -1,12 +1,13 @@
 package com.example.demo.AboutEvent.Models;
 
 import com.example.demo.base.model.AbstractBaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.*;
 
 import jakarta.persistence.*;
 
 import java.util.Objects;
-import java.util.Scanner;
 
 @Getter
 @Setter
@@ -24,6 +25,7 @@ public class Facture extends AbstractBaseEntity {
     @Column(name="CONTENU")
     private String contenu;
 
+<<<<<<< Updated upstream
     /*Scanner scanner = new Scanner(System.in);
 
     public Facture(Scanner scanner) {
@@ -64,7 +66,13 @@ public class Facture extends AbstractBaseEntity {
         this.contenu = aa;
     }
 */
+=======
+>>>>>>> Stashed changes
 
+    @ManyToOne
+    @JsonBackReference
+    private Event event;
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

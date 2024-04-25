@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 public interface FactureService {
 
    Facture createFacture(Facture f);
@@ -17,4 +18,6 @@ public interface FactureService {
 
 
     Facture getFactureById(Integer id);
+
+    
 }

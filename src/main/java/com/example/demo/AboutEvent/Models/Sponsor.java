@@ -8,6 +8,8 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Getter
 @Setter
 @ToString
@@ -22,6 +24,12 @@ public class Sponsor {
 
     @Column(name="DESCRIPTION")
     private String description;
+
+    @ManyToOne
+    @JsonManagedReference
+    private Event event;
+
+
 
     @Override
     public boolean equals(Object o) {

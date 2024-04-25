@@ -1,20 +1,27 @@
 package com.example.demo.AboutEvent.Service;
 
+import com.example.demo.AboutEvent.DTO.EventDTO;
+import com.example.demo.AboutEvent.DTO.FactureDTO;
+import com.example.demo.AboutEvent.Mappers.EventMapper;
 import com.example.demo.AboutEvent.Models.*;
 import com.example.demo.AboutEvent.Repository.EventRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.example.demo.AboutEvent.Mappers.FactureMapper;
+
 @Service ("eventServicev1")
 public class EventServiceImpl implements EventService{
     private static final Logger logger = LogManager.getLogger(EventServiceImpl.class);
 
     private final EventRepository eventRepository;
+    private static FactureMapper ff;
 
     public EventServiceImpl(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
@@ -42,10 +49,17 @@ public class EventServiceImpl implements EventService{
 
 
     @Override
-    public Event createEvent(Event e) {
-        logger.info("Creating event: {}",e);
-        return eventRepository.save(e);
+    public EventDTO createEvent(EventDTO e) {
+        /*logger.info("Creating event: {}",e);
+        return eventRepository.save(e);*/
+        Event newEvent = EventMapper.convertToEntity(e);
+        for (Facture facture : newEvent.getFactures()) {
+            facture.setEvent(newEvent);
+        }
+        Event savedEvent = eventRepository.save(newEvent);
+        return EventMapper.convertToDto(savedEvent);
     }
+    
 
 
     @Override
@@ -73,10 +87,14 @@ public class EventServiceImpl implements EventService{
 
 
     @Override
-    public List<Facture> generateALLFacture(long id) {
+    public List<FactureDTO> generateALLFacture(long id) {
         logger.info("Finding Factures for event with id {}",id);
+        List<FactureDTO> rr= new ArrayList<>();
         if (eventRepository.existsById(id)) {
-            return eventRepository.findById(id).get().getFactures();
+            List<Facture> l = eventRepository.findById(id).get().getFactures();
+            for (Facture e:l) {FactureDTO o=FactureMapper.convertToDto(e);
+            rr.add(o);
+            } return rr;
 
         }else {
             logger.warn("event with id {} not found", id);

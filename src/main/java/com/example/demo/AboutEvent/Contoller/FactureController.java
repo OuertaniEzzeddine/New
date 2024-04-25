@@ -4,7 +4,6 @@ package com.example.demo.AboutEvent.Contoller;
 
 import com.example.demo.AboutEvent.Models.Facture;
 import com.example.demo.AboutEvent.Service.FactureService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public class FactureController {
 
     private final FactureService factureService;
 
-    @Autowired
+    
     public FactureController(FactureService factureService) {
         this.factureService = factureService;
     }
@@ -44,5 +43,6 @@ public class FactureController {
     public void deleteFacture(@PathVariable("id") Integer id) {
         factureService.deleteFacture(id);
     }
+   
 }
 

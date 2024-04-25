@@ -1,6 +1,8 @@
 package com.example.demo.AboutEvent.Models;
 
 import com.example.demo.base.model.AbstractBaseEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -31,6 +33,10 @@ public class Depense extends AbstractBaseEntity {
 
     @Column(name="DATE")
     private Date date;
+
+    @ManyToOne
+    @JsonManagedReference
+    private Event event;
 
     @Override
     public boolean equals(Object o) {
