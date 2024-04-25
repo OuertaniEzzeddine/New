@@ -12,7 +12,7 @@ import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+@Service
 public class DepenseServiceImpl implements DepenseService {
     private static final Logger logger = LogManager.getLogger(DepenseServiceImpl.class);
 

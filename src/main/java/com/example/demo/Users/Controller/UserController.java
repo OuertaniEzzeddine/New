@@ -1,55 +1,95 @@
 package com.example.demo.Users.Controller;
 
 
+import java.util.HashMap;
+import java.util.Map;
 
-        ;
-/*import com.example.demo.Users.Service.UserService;
+import com.example.demo.Users.Models.AuthRequest;
+import com.example.demo.Users.Models.User;
+import com.example.demo.Users.Service.JwtService;
+import com.example.demo.Users.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import io.jsonwebtoken.ExpiredJwtException;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/user")
 public class UserController {
 
-    private final UserService userService;
+        @Autowired
+        private UserService service;
 
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+        @Autowired
+        private JwtService jwtService;
 
-    @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userService.getAllUsers();
-        return new ResponseEntity<>(users, HttpStatus.OK);
-    }
+        @Autowired
+        private AuthenticationManager authenticationManager;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
+        @GetMapping("/welcome")
+        public String welcome() {
+                return "Welcome this endpoint is not secure";
+        }
 
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User createdUser = userService.createUser(user);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
-    }
+        @PostMapping
+        public User addNewUser(@RequestBody User userInfo) {
+                return service.addUser(userInfo);
+        }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        User updatedUser = userService.updateUser(id, user);
-        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
-    }
+        @GetMapping("/user/{id}/profile")
+        public String userProfile(@PathVariable("id") int id){
+                return "Welcome to User Profile" + id  ;
+        }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-}*/
 
+        @PostMapping("/login")
+        public Map<String, String> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+                Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+                if (authentication.isAuthenticated()) {
+                        String token = jwtService.generateToken(authRequest.getUsername());
+                        Map<String, String> response = new HashMap<>();
+                        response.put("token", token);
+                        return response;
+                } else {
+                        throw new UsernameNotFoundException("Invalid user request!");
+                }
+        }
+
+        @PostMapping("/refresh-token")
+        public ResponseEntity<?> refreshToken(@RequestHeader("Authorization") String authorizationHeader) {
+                String username = null;
+                String refreshToken = null;
+                if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+                        refreshToken = authorizationHeader.substring(7);
+                        try {
+                                username = jwtService.extractUsername(refreshToken);
+                        } catch (ExpiredJwtException e) {
+                                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Refresh token expired");
+                        } catch (Exception e) {
+                                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid refresh token");
+                        }
+                }
+
+                if (username != null && refreshToken != null ) {
+                        UserDetails userDetails = service.loadUserByUsername(username);
+
+                        if (jwtService.validateToken(refreshToken, userDetails)) {
+                                String newAccessToken = jwtService.generateToken(userDetails.getUsername());
+                                Map<String, String> response = new HashMap<>();
+                                response.put("token", newAccessToken);
+
+                                return ResponseEntity.ok(response);
+                        }
+                }
+
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+        }
+
+}

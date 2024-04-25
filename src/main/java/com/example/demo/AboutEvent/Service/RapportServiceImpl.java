@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+@Service
 public class RapportServiceImpl implements RapportService {
     private static final Logger logger = LogManager.getLogger(RapportServiceImpl.class);
 

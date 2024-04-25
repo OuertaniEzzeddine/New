@@ -19,12 +19,7 @@ public class DemoApplication {
 
 
 
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		Facture f=new Facture(scanner);
-		System.out.println(f.getContenu());
-		//SpringApplication.run(DemoApplication.class, args);
-	}
+	public static void main(String[] args) {SpringApplication.run(DemoApplication.class, args);}
 
 
 }

@@ -24,7 +24,7 @@ public class Facture extends AbstractBaseEntity {
     @Column(name="CONTENU")
     private String contenu;
 
-    Scanner scanner = new Scanner(System.in);
+    /*Scanner scanner = new Scanner(System.in);
 
     public Facture(Scanner scanner) {
         System.out.println("Donner l'ID de la facture:");
@@ -63,7 +63,7 @@ public class Facture extends AbstractBaseEntity {
         aa += String.format("\nMONTANT TOTAL : %.2f", totalAmount);
         this.contenu = aa;
     }
-
+*/
 
     @Override
     public boolean equals(Object o) {

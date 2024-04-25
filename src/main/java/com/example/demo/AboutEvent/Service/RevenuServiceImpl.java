@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+@Service
 public class RevenuServiceImpl implements RevenuService{
     private static final Logger logger = LogManager.getLogger(RevenuServiceImpl.class);
 

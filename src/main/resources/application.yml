@@ -1,6 +1,8 @@
 server:
   port: 8085
 spring:
+  main:
+    allow-circular-references: true
   application:
     name: Projet_web
   mvc:
