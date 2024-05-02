@@ -48,10 +48,10 @@ spring:
 
     properties:
       hibernate:
-<<<<<<< HEAD
+
         '[format_sql]': true
-=======
-        '[format_sql]': true
+
+
   springdoc:
     default-produces-media-type: application/json
 application:
@@ -67,4 +67,4 @@ application:
 
   
  
->>>>>>> 7fa0388e06274c510af2530e834828da2cf874a1
+

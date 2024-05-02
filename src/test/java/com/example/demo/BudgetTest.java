@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import com.example.demo.AboutEvent.Models.Budget;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 7fa0388e06274c510af2530e834828da2cf874a1
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BudgetTest {
