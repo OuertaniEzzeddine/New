@@ -1,6 +1,30 @@
 server:
   port: 8085
+  servlet:
+    context-path: /api/v1/
 spring:
+  profiles:
+    active: dev
+    servlet:
+      multipart:
+        max-file-size: 50MB
+  mail:
+    host: localhost
+    port: 1025
+    username: ezzou
+    password: ezzou
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enable: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+
+
   main:
     allow-circular-references: true
   application:
@@ -11,18 +35,32 @@ spring:
       suffix: .jsp
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/a
+    url: jdbc:postgresql://localhost:5432/enicar_finance
     username: postgres
-    password: 962001Bibi
+    password: ezzou
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
     database : postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
+
     properties:
       hibernate:
         '[format_sql]': true
+  springdoc:
+    default-produces-media-type: application/json
+application:
+  security:
+    jwt:
+      secret-key: 982CFE84FA2CDDED153A735D5BD83
+      expiration: 8623355
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
+
+
+
   
  

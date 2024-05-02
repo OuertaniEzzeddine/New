@@ -2,9 +2,10 @@ package com.example.demo.base.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -16,11 +17,13 @@ public abstract class AbstractBaseEntity implements Serializable {
     @Column(name = "UUID")
     private UUID uuid;
 
-    @Column(name = "INSERT_DATE")
-    private LocalDate insertDate;
+    /*@CreatedDate
+    @Column(name = "Creation_DATE",nullable = false,updatable = false)
+    private LocalDate createdDate;
 
-    @Column(name = "MODIFICATION_DATE")
-    private LocalDate modificationDate;
+    @LastModifiedDate
+    @Column(name = "MODIFICATION_DATE",insertable = false)
+    private LocalDate modificationDate;*/
 
 
 }

@@ -3,7 +3,6 @@ package com.example.demo.AboutEvent.Contoller;
 import com.example.demo.AboutEvent.DTO.EventDTO;
 import com.example.demo.AboutEvent.DTO.FactureDTO;
 import com.example.demo.AboutEvent.Models.Event;
-import com.example.demo.AboutEvent.Models.Facture;
 import com.example.demo.AboutEvent.Service.EventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

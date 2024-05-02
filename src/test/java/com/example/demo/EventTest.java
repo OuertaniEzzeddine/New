@@ -1,6 +1,5 @@
 package com.example.demo;
 import com.example.demo.AboutEvent.Models.Event;
-import com.example.demo.AboutEvent.Models.Budget;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
