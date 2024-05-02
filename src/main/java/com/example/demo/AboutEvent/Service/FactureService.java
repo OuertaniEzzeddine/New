@@ -2,7 +2,6 @@ package com.example.demo.AboutEvent.Service;
 
 
 import com.example.demo.AboutEvent.Models.*;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

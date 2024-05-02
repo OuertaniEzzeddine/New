@@ -4,8 +4,6 @@ import com.example.demo.AboutEvent.Models.*;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
