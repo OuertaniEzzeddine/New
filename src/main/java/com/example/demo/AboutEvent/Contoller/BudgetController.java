@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/budgets")
+@RequestMapping("/auth/budgets")
 public class BudgetController {
 
     private final BudgetService budgetService;
