@@ -27,7 +27,7 @@ public class Budget extends AbstractBaseEntity {
     private Double montant;
 
     @Column(name = "DESCRIPTION")
-    private String desciption;
+    private String description;
 
     @ManyToOne
     @JsonBackReference
@@ -38,11 +38,11 @@ public class Budget extends AbstractBaseEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Budget budget = (Budget) o;
-        return Objects.equals(id, budget.id) && Objects.equals(montant, budget.montant) && Objects.equals(desciption, budget.desciption);
+        return Objects.equals(id, budget.id) && Objects.equals(montant, budget.montant) && Objects.equals(description, budget.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, montant, desciption);
+        return Objects.hash(id, montant, description);
     }
 }

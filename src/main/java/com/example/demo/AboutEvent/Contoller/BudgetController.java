@@ -4,7 +4,6 @@ package com.example.demo.AboutEvent.Contoller;
 
 import com.example.demo.AboutEvent.Models.Budget;
 import com.example.demo.AboutEvent.Service.BudgetService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,6 @@ public class BudgetController {
 
     private final BudgetService budgetService;
 
-    @Autowired
     public BudgetController(BudgetService budgetService) {
         this.budgetService = budgetService;
 

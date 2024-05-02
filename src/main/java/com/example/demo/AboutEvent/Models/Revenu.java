@@ -1,6 +1,7 @@
 package com.example.demo.AboutEvent.Models;
 
 import com.example.demo.base.model.AbstractBaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.*;
@@ -33,7 +34,7 @@ public class Revenu extends AbstractBaseEntity {
     private Date date;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Event event;
 
     @Override

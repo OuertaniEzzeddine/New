@@ -34,15 +34,15 @@ public class Event extends AbstractBaseEntity {
     private Rapport rapp;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
-    @JsonBackReference
+    @JsonManagedReference
     private List<Budget> budgets;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
-    @JsonBackReference
+    @JsonManagedReference
     private List<Depense> depenses;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
-    @JsonBackReference
+    @JsonManagedReference
     private List<Revenu> revenus;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
@@ -50,7 +50,7 @@ public class Event extends AbstractBaseEntity {
     private List<Facture> factures;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "event",orphanRemoval = true)
-    @JsonBackReference
+    @JsonManagedReference
     private List<Sponsor> sponsors;
 
     @Override

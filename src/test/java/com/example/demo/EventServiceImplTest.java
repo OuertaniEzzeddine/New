@@ -40,7 +40,6 @@ public class EventServiceImplTest {
         assertEquals(events, result);
     }
 
-    // Similar test methods for other methods in EventServiceImpl...
 
     @Test
     public void testRemainingBudget() {

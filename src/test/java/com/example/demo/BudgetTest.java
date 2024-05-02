@@ -1,12 +1,10 @@
 package com.example.demo;
 
-import com.example.demo.AboutEvent.Models.Facture;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.example.demo.AboutEvent.Models.Budget;
 
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,30 +17,30 @@ public class BudgetTest {
         budget = new Budget();
         budget.setId(1);
         budget.setMontant(1000.0);
-        budget.setDesciption("Test budget");
+        budget.setDescription("Test budget");
     }
 
     @Test
     public void testGettersAndSetters() {
         assertEquals(1, budget.getId());
         assertEquals(1000.0, budget.getMontant());
-        assertEquals("Test budget", budget.getDesciption());
+        assertEquals("Test budget", budget.getDescription());
 
         // Test setters
         budget.setId(2);
         budget.setMontant(2000.0);
-        budget.setDesciption("Updated budget");
+        budget.setDescription("Updated budget");
 
         assertEquals(2, budget.getId());
         assertEquals(2000.0, budget.getMontant());
-        assertEquals("Updated budget", budget.getDesciption());
+        assertEquals("Updated budget", budget.getDescription());
     }
 
-    /*@Test
+    @Test
     public void testEqualsAndHashCode() {
-        Budget budget1 = new Budget(1, 1000.0, "Test budget");
-        Budget budget2 = new Budget(1, 1000.0, "Test budget");
-        Budget budget3 = new Budget(2, 2000.0, "Updated budget");
+        Budget budget1 = new Budget(1, 1000.0, "Test budget",null);
+        Budget budget2 = new Budget(1, 1000.0, "Test budget", null);
+        Budget budget3 = new Budget(2, 2000.0, "Updated budget",null);
 
         // Test equals method
         assertTrue(budget1.equals(budget2));
@@ -51,6 +49,6 @@ public class BudgetTest {
         // Test hashCode method
         assertEquals(budget1.hashCode(), budget2.hashCode());
         assertNotEquals(budget1.hashCode(), budget3.hashCode());
-    }*/
+    }
 
 }

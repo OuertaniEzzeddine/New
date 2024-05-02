@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Getter
@@ -26,7 +27,7 @@ public class Sponsor {
     private String description;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference
     private Event event;
 
 
